@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MoodTrackApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(MoodTrackApplication.class, args);
 	}
 
