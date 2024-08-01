@@ -11,46 +11,53 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UsersServiceImpl implements UsersService {
 
     @Autowired
     UsersRepository usersRepository;
+
     @Override
     public String registerUsers(UsersDTO usersDTO) {
+        Integer maxuserId = usersRepository.findMaxUserId();
+
+        int nextuserId = (maxuserId != null) ? maxuserId + 1 : 1;
+
         Users users = new Users(
+                nextuserId,
                 usersDTO.getUsername(),
                 usersDTO.getPassword()
         );
 
-
-        if(!usersRepository.existsById(users.getUsername())){
+        if (!usersRepository.existsByUsername(users.getUsername())) {
             usersRepository.save(users);
             return "saved";
-        }
-        else{
+        } else {
             return "already exists";
-            //throw new DuplicateKeyException("Already exists");
         }
     }
+
+
+
 
 
     @Override
     public String loginUsers(UsersDTO usersDTO) {
-        Users user  =  new Users(
-                usersDTO.getUsername(),
-                usersDTO.getPassword()
-        );
+        // Fetch the user by username
+        Optional<Users> userRepo = usersRepository.findByUsername(usersDTO.getUsername());
 
-        if(usersRepository.existsById(user.getUsername())){
-            Users userRepo = usersRepository.getById(user.getUsername());
-            if((user.getPassword()).equals(userRepo.getPassword())){
+        if (userRepo.isPresent()) {
+            Users user = userRepo.get();
+            if (user.getPassword().equals(usersDTO.getPassword())) {
                 return "Successfully Login";
-            }else{
+            } else {
                 return "Invalid Password";
             }
-        }else{
+        } else {
             return "Invalid Username";
         }
     }
+
 }

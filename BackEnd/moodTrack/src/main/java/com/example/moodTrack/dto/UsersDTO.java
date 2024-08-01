@@ -4,32 +4,32 @@ import jakarta.persistence.Column;
 
 public class UsersDTO {
 
-    private int indexNo;
-    private int username;
+    private int userId;
+    private String username;
     private String password;
 
     public UsersDTO() {
     }
 
-    public UsersDTO(int indexNo, int username, String password) {
-        this.indexNo = indexNo;
+    public UsersDTO(int userId, String username, String password) {
+        this.userId = userId;
         this.username = username;
         this.password = password;
     }
 
-    public int getIndexNo() {
-        return indexNo;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setIndexNo(int indexNo) {
-        this.indexNo = indexNo;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public int getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(int username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -44,7 +44,7 @@ public class UsersDTO {
     @Override
     public String toString() {
         return "UsersDTO{" +
-                "indexNo=" + indexNo +
+                "userId=" + userId +
                 ", username=" + username +
                 ", password='" + password + '\'' +
                 '}';

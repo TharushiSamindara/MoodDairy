@@ -7,11 +7,11 @@ import jakarta.persistence.*;
 public class Users {
 
     @Id
-    @Column(name="indexNo", length=50)
-    private int indexNo;
+    @Column(name="userId", length=50)
+    private int userId;
 
-    @Column(name="username", length=50)
-    private int username;
+    @Column(name="userId", length=50)
+    private String username;
 
     @Column(name = "password", length= 50)
     private String password;
@@ -19,25 +19,25 @@ public class Users {
     public Users() {
     }
 
-    public Users(int indexNo, int username, String password) {
-        this.indexNo = indexNo;
+    public Users(int userId, String username, String password) {
+        this.userId = userId;
         this.username = username;
         this.password = password;
     }
 
-    public int getIndexNo() {
-        return indexNo;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setIndexNo(int indexNo) {
-        this.indexNo = indexNo;
+    public void userId(int userId) {
+        this.userId = userId;
     }
 
-    public int getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(int username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -52,7 +52,7 @@ public class Users {
     @Override
     public String toString() {
         return "Users{" +
-                "indexNo=" + indexNo +
+                "userId=" + userId +
                 ", username=" + username +
                 ", password='" + password + '\'' +
                 '}';
