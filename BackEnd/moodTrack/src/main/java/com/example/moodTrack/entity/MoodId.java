@@ -9,7 +9,7 @@ import java.util.Objects;
 
 @Embeddable
 public class MoodId implements Serializable {
-    @Column(name = "user_id", length= 5)
+    @Column(name = "userId", length= 5)
     private int userId;
     @Column(name = "date")
     private Date date;
