@@ -20,7 +20,7 @@ public class UsersServiceImpl implements UsersService {
     UsersRepository usersRepository;
 
     @Override
-    public String registerUsers(UsersDTO usersDTO) {
+    public int registerUsers(UsersDTO usersDTO) {
         Integer maxuserId = usersRepository.findMaxUserId();
 
         int nextuserId = (maxuserId != null) ? maxuserId + 1 : 1;
@@ -33,9 +33,10 @@ public class UsersServiceImpl implements UsersService {
 
         if (!usersRepository.existsByUsername(users.getUsername())) {
             usersRepository.save(users);
-            return "saved";
+            return nextuserId;
         } else {
-            return "already exists";
+            //User given username is already exists
+            return 0;
         }
     }
 
@@ -44,19 +45,21 @@ public class UsersServiceImpl implements UsersService {
 
 
     @Override
-    public String loginUsers(UsersDTO usersDTO) {
+    public int loginUsers(UsersDTO usersDTO) {
         // Fetch the user by username
         Optional<Users> userRepo = usersRepository.findByUsername(usersDTO.getUsername());
 
         if (userRepo.isPresent()) {
             Users user = userRepo.get();
             if (user.getPassword().equals(usersDTO.getPassword())) {
-                return "Successfully Login";
+                return user.getUserId();
             } else {
-                return "Invalid Password";
+                //Wrong password
+                return -1;
             }
         } else {
-            return "Invalid Username";
+            //Wrong username
+            return 0;
         }
     }
 

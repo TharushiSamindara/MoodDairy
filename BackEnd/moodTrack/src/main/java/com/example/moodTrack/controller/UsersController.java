@@ -16,14 +16,14 @@ public class UsersController {
     private UsersService usersService;
 
     @PostMapping(path = "/register")
-    public String registerUser(@RequestBody UsersDTO usersDTO){
-        String outputRegister = usersService.registerUsers(usersDTO);
+    public int registerUser(@RequestBody UsersDTO usersDTO){
+        int outputRegister = usersService.registerUsers(usersDTO);
         return outputRegister;
     }
 
     @GetMapping(path = "/login")
-    public String loginUser(@RequestBody UsersDTO usersDTO){
-        String outputLogin = usersService.loginUsers(usersDTO);
+    public int loginUser(@RequestBody UsersDTO usersDTO){
+        int outputLogin = usersService.loginUsers(usersDTO);
         return outputLogin;
     }
 }

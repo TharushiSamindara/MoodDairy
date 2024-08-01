@@ -4,8 +4,8 @@ import com.example.moodTrack.dto.MoodDTO;
 import com.example.moodTrack.dto.UsersDTO;
 
 public interface UsersService {
-    public String registerUsers(UsersDTO usersDTO);
+    public int registerUsers(UsersDTO usersDTO);
 
-    public String loginUsers(UsersDTO usersDTO);
+    public int loginUsers(UsersDTO usersDTO);
 }
 
