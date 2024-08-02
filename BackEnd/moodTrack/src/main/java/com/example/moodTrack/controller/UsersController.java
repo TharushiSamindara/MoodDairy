@@ -21,7 +21,7 @@ public class UsersController {
         return outputRegister;
     }
 
-    @GetMapping(path = "/login")
+    @PostMapping(path = "/login")
     public int loginUser(@RequestBody UsersDTO usersDTO){
         int outputLogin = usersService.loginUsers(usersDTO);
         return outputLogin;
