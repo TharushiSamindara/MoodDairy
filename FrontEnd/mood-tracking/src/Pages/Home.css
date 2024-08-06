@@ -1,0 +1,53 @@
+Body{
+    background-image: url('./Images/Background/moodBackground.jpeg');
+    background-size: cover;
+  }
+  
+  h1{
+    text-align: center;
+    font-style: italic;
+    color: midnightblue;
+  }
+  
+  .moodTable {
+    width: 100%; 
+    background-color: rgb(26, 134, 230);
+  }
+  
+  img{
+    width: 100%;
+  }
+  
+  .buttonSet{
+    width: 100%;
+    text-align: center;
+    height: 100px;
+  }
+  
+  tr{
+    align-items: center;
+  }
+  .btnSpecify{
+    height: 80%;
+    width: 80%;
+  }
+  
+  #moodRead{
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    padding: '20px'
+  }
+  
+  button{
+    font-size: large;
+    font-weight: bold;
+    background-color: lightblue;
+  }
+  img{
+    width: 100px;
+  }
+
+  
+  
+  
